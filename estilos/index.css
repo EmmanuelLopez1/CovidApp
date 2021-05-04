@@ -1,0 +1,116 @@
+.navbar {
+  background-color: #119E1D;
+}
+.navbar a {
+  color: white !important;
+}
+
+/*CARDS*/
+.card img {
+  height: 320px;
+}
+.card__alert {
+  color: red;
+  font-size: 30px;
+}
+
+.menu {
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.content {
+  height: 600px;
+  padding: 0px !important;
+  margin-top: 50px;
+}
+.content .form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #9E0238;
+  border-radius: 5px;
+}
+.content .form .form__input {
+  width: 100%;
+  margin: 10px 0px;
+  height: 40px;
+  padding-left: 10px;
+  outline: none;
+}
+.content .form__button {
+  outline: none;
+  margin-bottom: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #119E1D;
+  color: white;
+  height: 40px;
+}
+.content .form .clear {
+  background-color: #9E0238;
+}
+.content .form__search:hover {
+  background-color: #31EB41;
+}
+.content .form__alerta {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  border: 1px solid red;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  color: red;
+  font-size: 18px;
+  display: none;
+}
+.content .table {
+  display: none;
+  margin-top: 30px;
+  height: 100%;
+}
+.content .table .t-head {
+  display: block;
+  width: 100%;
+  background-color: #9E0238;
+}
+.content .table .t-head th {
+  color: white;
+}
+.content .table .t-body {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #119E1D;
+}
+.content .table tr {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #87dccc;
+}
+.content .table tr th {
+  border: none;
+}
+.content .table tr td {
+  border: none;
+}
+
+.grafica {
+  margin: 70px auto;
+}
+.grafica .graphic {
+  width: 100%;
+  margin: auto;
+  border: 1px solid #9E0238;
+  border-radius: 5px;
+}
+
+.content {
+  width: 80%;
+  margin: 20px auto;
+}
+
+/*# sourceMappingURL=index.css.map */
