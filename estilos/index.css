@@ -9,10 +9,6 @@
 .card img {
   height: 320px;
 }
-.card__alert {
-  color: red;
-  font-size: 30px;
-}
 
 .menu {
   justify-content: space-around;
@@ -69,6 +65,7 @@
   display: none;
   margin-top: 30px;
   height: 100%;
+  margin-bottom: 150px;
 }
 .content .table .t-head {
   display: block;
@@ -78,7 +75,7 @@
 .content .table .t-head th {
   color: white;
 }
-.content .table .t-body {
+.content .table tbody {
   display: block;
   height: 100%;
   overflow-y: auto;
@@ -100,6 +97,11 @@
 
 .grafica {
   margin: 70px auto;
+}
+.grafica .title {
+  display: none;
+  font-size: 48px;
+  text-align: center;
 }
 .grafica .graphic {
   width: 100%;

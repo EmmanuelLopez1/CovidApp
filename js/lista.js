@@ -1,55 +1,63 @@
-export const lista = class Lista{
-    constructor(){
-        
+export const lista = class Lista {
+    constructor() {
+
     }
 
-    //CREA UNA LISTA DE ELEMENTOS, LES ASIGNA VALOR, CLASES Y LOS MUESTRA EN EL DOM
-    crearElemento(indice, datos){
-        //ELEMENTO PADRE
-        let tBody = document.querySelector('.t-body')
-        tBody.classList.add('t-body')
-
-        //FILA DE LA LISTA
-        let tr = document.createElement("tr")
-        tr.classList.add('tr')
-
-        //NUMERAL DE LA LISTA
-        let th = document.createElement("th")
-        tr.appendChild(th)   
-        th.textContent = indice
-
-
-        for(let i = 1; i <= 4; i++){
-        //ASIGNACION DE VALOR A UN NODO DE LA UNA FILA DE LA LISTA POR ORDEN DE IZQUIERDA A DERECHA E INSERCCION EN EL DOM.
-        let td = document.createElement("td")
-            switch (i) {
-                case 1:
-                    td.textContent = datos[indice].Country
-                    break;
-                case 2:
-                    td.textContent = datos[indice].Status
-                    break;
-                case 3:
-                    const date = datos[indice].Date
-                    td.textContent = date.substr(0, 10)
-                    break
-                case 4:
-                    td.textContent = datos[indice].Cases
-                default:
-                    break;
+    //CREA UNA LISTA DE ELEMENTOS, LES ASIGNA VALOR Y CLASES
+    crearElementoFila(data) {
+        let elements = []
+        for (let i in data) {
+            let nodo = document.createElement('td')
+            let baby = i
+            if (baby == 2) {
+                let fecha = data[i].substr(0, 10)
+                nodo.textContent = fecha
+                elements[i] = nodo
             }
-            //INSERCCION DE LA FILA A LA LISTA
-            tr.appendChild(td)
+            else {
+                nodo.textContent = data[i]
+                elements[i] = nodo
+            }
+
         }
-
-        //INSERCCION DE LA LISTA A LA TABLA
-        tBody.appendChild(tr)
+        return elements
     }
 
-    mostrarElemento(clase){
-        let lista= document.querySelector(clase)
-        lista.style.display = 'block'
+    //FILA DE LA LISTA
+    crearFila(clase) {
+        let tr = $(`<tr></tr>`)[0]
+        tr.classList.add(clase)
+        return tr
     }
 
+    //NUMERAL DE LA LISTA
+    noFila(indice) {
+        let th = document.createElement("th")
+        th.textContent = indice
+        return th
+    }
 
+    crearTBody(indice, data, padre) {
+        //OBTENIENDO LOS ELEMENTOS DEL TBODY DE LA LISTA
+        let tBody = padre
+        let fila = this.crearFila('tr')
+        let noFila = this.noFila(indice)
+        let elements = this.crearElementoFila([data.Country, data.Status, data.Date, data.Cases])
+
+        //CREANDO UNA FILA DE ELEMENTOS Y AGREGANDOLA A LA FILA
+        tBody.appendChild(fila)
+        fila.appendChild(noFila)
+        for (let i = 0; i < 4; i++) {
+            fila.appendChild(elements[i])
+        }
+    }
+
+    //MUESTRA LA TABLA CON LOS DATOS YA INGRESADOS EN ELLA
+    mostrarTabla(clase) {
+        let lista = $(`${clase}`)
+        lista.fadeIn(1000, () => {
+            lista[0].style.display = 'block'
+        })
+
+    }
 }

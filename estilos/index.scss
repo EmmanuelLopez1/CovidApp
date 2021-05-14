@@ -6,7 +6,6 @@ $fondo-hover:#31EB41;
 $border-color:#9E0238;
 $border-radius:5px;
 
-
 //BUTTONS
 $button-danger:#9E0238;
 
@@ -24,10 +23,7 @@ $button-danger:#9E0238;
     img{
         height: 320px;
     }
-    &__alert{
-        color: red;
-        font-size: 30px;
-    }
+   
 }
 
 //PAIS.HTML
@@ -43,6 +39,7 @@ $button-danger:#9E0238;
     height: 600px;
     padding: 0px !important;
     margin-top: 50px;
+   
     .form{
         padding: 20px;
         display: flex;
@@ -89,6 +86,7 @@ $button-danger:#9E0238;
         display: none;
         margin-top: 30px;
         height: 100%;
+        margin-bottom: 150px;
         .t-head{
             display: block;
             width: 100%;
@@ -97,7 +95,7 @@ $button-danger:#9E0238;
                 color: white;
             }
         }
-        .t-body{
+        tbody{
             display: block;
             height: 100%;
             overflow-y: auto;
@@ -124,6 +122,11 @@ $button-danger:#9E0238;
 
 .grafica{
     margin: 70px auto;
+    .title{
+        display: none;
+        font-size: 48px;
+        text-align: center;
+    }
     .graphic{
         width: 100%;
         margin: auto;
