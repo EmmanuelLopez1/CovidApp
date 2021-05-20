@@ -115,4 +115,21 @@
   margin: 20px auto;
 }
 
+.loader {
+  display: none;
+  justify-content: center;
+  margin: auto;
+}
+.loader svg {
+  display: block;
+  width: 70px;
+  height: 70px;
+}
+.loader svg circle {
+  stroke: #119E1D;
+}
+.loader svg line {
+  stroke: #119E1D;
+}
+
 /*# sourceMappingURL=index.css.map */

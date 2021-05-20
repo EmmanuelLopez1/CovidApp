@@ -104,8 +104,6 @@ export const form = class Formulario {
                 return true
             }
         }
-
-        return true
     }
 
     //MUESTRA UN MENSAJE DE ERROR

@@ -135,10 +135,29 @@ $button-danger:#9E0238;
     }
 }
 
-//
 .content{
     width: 80%;
     margin:20px auto;
+}
+
+
+//LOADER
+
+.loader{
+    display:none;
+    justify-content:center;
+    margin:auto;
+    svg{
+        display:block;
+        width:70px;
+        height:70px;
+        circle{
+            stroke:$fondo;
+        }
+        line{
+            stroke:$fondo;
+        }
+    }
 }
 
 

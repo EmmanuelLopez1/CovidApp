@@ -85,4 +85,17 @@ export const functions = class Functions {
             date2[0].value = storage[5]
         }
     }
+
+
+    //SE MUESTRA EL LOADER EN EL FORMULARIO
+    mostrarLoader(){
+         let loading = document.querySelector('.loader').style
+         loading.display = 'block'
+    }
+
+    //SE OCULTA EL LOADER EN EL FORMULARIO
+    ocultarLoader(){
+        let loading = document.querySelector('.loader').style
+        loading.display = 'none'
+    }
 }

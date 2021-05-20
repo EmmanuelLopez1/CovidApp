@@ -50,29 +50,49 @@ $('.search').on('click', () => {
       }
     }
 
-    //SE PIDEN DATOS AL FORMULARIO
+    
     async function data() {
-      //se obtienen los valores del pais solicitados
-      let datos = await datosCovid.pedirDatos(values.country, values.status, values.date1, values.date2)
+     
+      
+    //MANEJO DE ERRORES DURANTE EL PROCESO ASINCRONO
+      try {
+        //SE PIDEN DATOS AL FORMULARIO
 
-      //Se guardsa en el local Storage los valores ingresados por ele usuario
-      stor.setAllStorage(country, null, status, graphic, date1, date2)
+        //Se oculta el loader del formulario
+        funct.mostrarLoader()
 
-      //Se verifica si se deben de mostrar o eliminar los datos para no llenar la pantalla de datos obsoletos
-      if (flat) {
+        //se obtienen los valores del pais solicitados
+        let datos = await datosCovid.pedirDatos(values.country, values.status, values.date1, values.date2)
+
+        //Se oculta el loader del formulario
+        funct.ocultarLoader()
+
+        //Se guardsa en el local Storage los valores ingresados por ele usuario
+        stor.setAllStorage(country, null, status, graphic, date1, date2)
+
+        //Se verifica si se deben de mostrar o eliminar los datos para no llenar la pantalla de datos obsoletos
+        if (flat) {
           //Se insertan las filas de las tablas y sus respectivos valores en las tablas y se muestran
-        flat = funct.generarTBody(datos.length, datos, padre, '.table', flat)
-      } else {
-        //Se eleminan los valores antiguos
-        flat = funct.ocultarValores('.t-body', flat)
+          flat = funct.generarTBody(datos.length, datos, padre, '.table', flat)
+        } else {
+          //Se eleminan los valores antiguos
+          flat = funct.ocultarValores('.t-body', flat)
 
 
 
-        flat = funct.generarTBody(datos.length, datos, padre, '.table', flat)
+          flat = funct.generarTBody(datos.length, datos, padre, '.table', flat)
+        }
+
+        //Se muestran la grafica con los datos solicitados
+        flat = funct.mostrarImagen(datos, values, 0)
+
+      } catch (error) {
+
+        formu.mostrarAlerta("Ha ocurrido el siguiente error durante el proceso:  " + error)
+
       }
 
-      //Se muestran la grafica con los datos solicitados
-      flat = funct.mostrarImagen(datos, values, 0)
+
     }
   }
 
