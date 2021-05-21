@@ -42,24 +42,37 @@ $('.search').on('click', () => {
     let values = funct.obtenerValores()
     findCountry(values.country)
 
-    //Se valida que el o los paises ingredados por el usuario existan en la base de datos de la api
-    async function findCountry(country) {
-      let pais = await formu.buscarPais(country)
-      if (pais) {
-        data()
-      }
-    }
+    //MANEJO DE ERRORES
+
 
     
+    async function findCountry(country) {
+      try {
+        //Se muestra el loader del formulario
+        funct.mostrarLoader()
+
+        //Se valida que el o los paises ingredados por el usuario existan en la base de datos de la api
+        let pais = await formu.buscarPais(country)
+        if (pais) {
+          data()
+        }
+      } catch (error) {
+        formu.mostrarAlerta("Ha ocurrido el siguiente error durante el proceso:  " + error)
+
+      }
+
+
+    }
+
+
     async function data() {
-     
-      
-    //MANEJO DE ERRORES DURANTE EL PROCESO ASINCRONO
+
+
+      //MANEJO DE ERRORES DURANTE EL PROCESO ASINCRONO
       try {
         //SE PIDEN DATOS AL FORMULARIO
 
-        //Se oculta el loader del formulario
-        funct.mostrarLoader()
+
 
         //se obtienen los valores del pais solicitados
         let datos = await datosCovid.pedirDatos(values.country, values.status, values.date1, values.date2)

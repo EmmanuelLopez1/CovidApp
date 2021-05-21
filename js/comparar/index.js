@@ -42,15 +42,23 @@ $('.search').on('click', () => {
 
 
     async function findCountry(country, values) {
-        //Se valida que el o los paises ingredados por el usuario existan en la base de datos de la api
-        let pais = await formu.buscarPais(country[0])
+        //MANEJO DE ERRORES
+        try {
+             //Se muestran el icono de cargando en el fomulario
+             funct.mostrarLoader()
+            //Se valida que el o los paises ingredados por el usuario existan en la base de datos de la api
+            let pais = await formu.buscarPais(country[0])
+            if (pais) {
+               
 
-        if (pais) {
-            //Se valida que el segundo pais exista
-            let pais2 = await formu.buscarPais(country[1])
-            if (pais2) {
-                data(values)
+                //Se valida que el segundo pais exista
+                let pais2 = await formu.buscarPais(country[1])
+                if (pais2) {
+                    data(values)
+                }
             }
+        } catch (error) {
+            formu.mostrarAlerta("Ha ocurrido el siguiente error durante el proceso:  " + error)
         }
     }
 
@@ -61,16 +69,15 @@ $('.search').on('click', () => {
     async function data(values) {
 
         try {
-            
-            //Se muestran el icono de cargando en el fomulario
-           funct.mostrarLoader()
+
+
 
             //se obtienen los valores del pais 1 y 2
             let country1Values = await datosCovid.pedirDatos(values.country[0], values.status, values.date1, values.date2)
             let country2Values = await datosCovid.pedirDatos(values.country[1], values.status, values.date1, values.date2)
 
             //Se oculta el icono de cargando
-           funct.ocultarLoader()
+            funct.ocultarLoader()
 
             //Se guardsa en el local Storage los valores ingresados por ele usuario
             stor.setAllStorage(country, country2, status, graphic, date1, date2)
